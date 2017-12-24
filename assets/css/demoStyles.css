@@ -43,6 +43,10 @@ form legend {
 	margin: 2em 0em;
 }
 
+#demoTable {
+	display: inline !important;
+}
+
 thead {
 	background-color:#b0c8cc;
 }
