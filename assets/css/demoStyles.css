@@ -44,6 +44,10 @@ form legend {
 	margin: 2em 0em;
 }
 
+#demoTable {
+	width: 100% !important;
+}
+
 thead {
 	background-color:#b0c8cc;
 }

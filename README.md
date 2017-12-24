@@ -5,3 +5,5 @@ and editing record details required navigating to a separate page.
 
 This demo was originally hosted on a personal web server.  It was ported her to GitHub to preserve it as inspiration for
 other developers, although most modern JavaScript frameworks provide a means for this sort of data exchange.
+
+The working demo is available here: https://bcswartz.github.io/jQuery-tableFormSynch-plugin-demo/
