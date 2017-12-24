@@ -45,6 +45,7 @@ form legend {
 
 #demoTable {
 	display: inline !important;
+	border: 0px;
 }
 
 thead {
