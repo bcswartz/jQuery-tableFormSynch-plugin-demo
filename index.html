@@ -1,0 +1,148 @@
+---
+layout: default
+---
+
+
+<link type="text/css" rel="stylesheet" href="assets/css/demoStyles.css" />
+<script type="text/javascript" src="assets/javascript/jquery-1.2.6.min.js"></script>
+<!--Call the metadata plugin--->
+<script type="text/javascript" src="assets/javascript/jquery.metadata.min.js"></script>
+<!--Call the tableFormSynch plugin-->
+<script type="text/javascript" src="assets/javascript/jquery.tableFormSynch.min.js"></script>
+<!--Call the functions specific to the demo-->
+<script type="text/javascript" src="assets/javascript/demoJavaScript.js"></script>
+
+</head>
+
+<body>
+
+
+<div id="pageContent">
+
+    <h3>tableFormSynch Demo</h3>
+
+    <p>This plugin works in conjunction with the metadata plugin (<a href="http://plugins.jquery.com/project/metadata">http://plugins.jquery.com/project/metadata</a>)
+        to bind a table to a form such that you can populate the form with the data stored in a particular row and then use the form
+        to update the data and write it back to the row.  It also has functions for creating a new row based on the data
+        in the form, deleting a selected row, and clearing the form of all values.  It works with all form elements, including
+        checkboxes, radio buttons, and &lt;select&gt;</p>
+
+    <p>If you're not sure where to start, try it out by doing the following steps:</p>
+    <ol>
+        <li>Click on one of the Edit links.  The form will be populated with data associated with that row.</li>
+        <li>Make changes to the data in the form and click the "Update" button.
+            The data will be written back to to the row  (hint: change at least the person's name or e-mail to visibly change the row).</li>
+        <li>You can confirm that the data for the row was updated by clicking on a different Edit link (populating the form
+            with that data), then going back and clicking the original Edit link.  All of the changes you made in that
+            first step will be reflected in the form again.</li>
+        <li>The "Add" link and the "Delete" links work as well.  To start all over again, just refresh the page.</li>
+    </ol>
+
+    <p>
+        This demo consists of HTML, CSS, and JavaScript files, and it doesn't make any AJAX/server calls,
+        so you can run the demo on your local machine.
+    </p>
+
+    <hr />
+
+    <div id="tableHalf">
+        <a class="addRecord" href="anotherPage.html">Add new staff member</a>
+        <table id="demoTable" width="100%" border="1" cellpadding="2" cellspacing="2">
+            <thead>
+            <th>Name</th>
+            <th>E-mail</th>
+            <th>Actions</th>
+            </thead>
+            <tbody>
+            <tr id="6" class="{personId:6,firstName:'Tom',lastName:'Babbit',email:'tbabbit@none.com',shift:'Evening',supportLevel:1,skills:[1,2],notes:'This example would\'nt be complete without a demonstration of how to represent/format single and &quot;double-quotes&quot; in the data. Use server-side script to put a backslash in front of each single-quote and use the double-quote html code'}">
+                <td><span class="lastName">Babbit</span>, <span class="firstName">Tom</span></td>
+                <td class="email fontItalic">tbabbit@none.com</td>
+                <td>
+                    <a class="editRecord" href="anotherPage.html">Edit</a> | <a class="deleteRecord" href="anotherPage.html">Delete</a>
+                </td>
+            </tr>
+            <tr id="2" class="{personId:2,firstName:'Sally',lastName:'Fillion',email:'sfillion@none.com',shift:'Morning',supportLevel:2,skills:[2,3],notes:'Sally is our in-house Linux expert'}">
+                <td><span class="lastName">Fillion</span>, <span class="firstName">Sally</span></td>
+                <td class="email fontItalic">sfillion@none.com</td>
+                <td>
+                    <a class="editRecord" href="anotherPage.html">Edit</a> | <a class="deleteRecord" href="anotherPage.html">Delete</a>
+                </td>
+            </tr>
+            <tr id="3" class="{personId:3,firstName:'Jason',lastName:'Gray',email:'jgray@none.com',shift:'Midday',supportLevel:3,skills:[1,4,5],notes:'Jason has been with the unit for 5 years now.'}">
+                <td><span class="lastName">Gray</span>, <span class="firstName">Jason</span></td>
+                <td class="email fontItalic">jgray@none.com</td>
+                <td>
+                    <a class="editRecord" href="anotherPage.html">Edit</a> | <a class="deleteRecord" href="anotherPage.html">Delete</a>
+                </td>
+            </tr>
+            <tr id="5" class="{personId:5,firstName:'Alan',lastName:'Jenson',email:'ajenson@none.com',shift:'Morning',supportLevel:1,skills:[],notes:'Alan is brand-new, so his skill set is a bit unclear'}">
+                <td><span class="lastName">Jenson</span>, <span class="firstName">Alan</span></td>
+                <td class="email fontItalic">ajenson@none.com</td>
+                <td>
+                    <a class="editRecord" href="anotherPage.html">Edit</a> | <a class="deleteRecord" href="anotherPage.html">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <form id="demoForm" method="post" action="anotherPage.html">
+        <input type="hidden" name="personId" id="personId" value="" />
+        <fieldset title="staffForm">
+            <legend align="left">Add Staff Member</legend>
+            <p>
+                <label id="lbl_firstName" for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" size="20" value="">
+            </p>
+            <p>
+                <label id="lbl_lastName" for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" size="20" value="">
+            </p>
+            <p>
+                <label id="lbl_email" for="email">E-mail:</label>
+                <input type="text" id="email" name="email" size="20" value="">
+            </p>
+            <p>
+                <label id="lbl_supportLevel" for="supportLevel">Support Level:</label>
+                <select name="supportLevel" id="supportLevel">
+                    <option value="1">Support Level 1</option>
+                    <option value="2">Support Level 2</option>
+                    <option value="3">Support Level 3</option>
+                    <option value="4">Support Level 4</option>
+                </select>
+            </p>
+
+            <p>
+                <label id="lbl_shift">Work Shift:</label>
+            <div class="fieldRight">
+                <input type="radio" name="shift" id="shift_MR" value="Morning"> Morning
+                <input type="radio" name="shift" id="shift_MD" value="Midday"> Midday
+                <input type="radio" name="shift" id="shift_EV" value="Evening"> Evening
+            </div>
+            </p>
+
+            <p>
+                <label id="lbl_skills">Tech Skills:</label>
+            <div class="fieldRight">
+                <input type="checkbox" name="skills" value="1"> Windows
+                <input type="checkbox" name="skills" value="2"> Macintosh
+                <input type="checkbox" name="skills" value="3"> Linux
+                <input type="checkbox" name="skills" value="4"> Networking
+                <input type="checkbox" name="skills" value="5"> Printers
+            </div>
+            </p>
+
+            <p>
+                <label id="lbl_notes" for="notes">Profile:</label>
+                <textarea name="notes" id="notes" rows="4" cols="55"></textarea>
+            </p>
+
+            <p id="actionButtons">
+                <input type="button" id="addBtn" name="addBtn" value="Add Staff Record" />
+                <input type="button" id="updateBtn" name="updateBtn" value="Update Staff Record" />
+            </p>
+        </fieldset>
+    </form>
+
+</div>
