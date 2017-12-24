@@ -40,12 +40,7 @@ form legend {
 }
 
 #tableHalf {
-	width: 100%;
 	margin: 2em 0em;
-}
-
-#demoTable {
-	width: 100% !important;
 }
 
 thead {
